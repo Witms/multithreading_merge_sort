@@ -6,21 +6,19 @@ void merge(int* arr, int l, int m, int r)
     const int nl = m - l + 1;
     const int nr = r - m;
 
-    // создаем временные массивы
     int* left = new int [nl] {};
     int* right = new int [nr] {};
 
-    // копируем данные во временные массивы
     for (int i = 0; i < nl; i++)
         left[i] = arr[l + i];
     for (int j = 0; j < nr; j++)
         right[j] = arr[m + 1 + j];
 
     int i = 0, j = 0;
-    int k = l;  // начало левой части
+    int k = l;  
 
     while (i < nl && j < nr) {
-        // записываем минимальные элементы обратно во входной массив
+        
         if (left[i] <= right[j]) {
             arr[k] = left[i];
             i++;
@@ -31,13 +29,13 @@ void merge(int* arr, int l, int m, int r)
         }
         k++;
     }
-    // записываем оставшиеся элементы левой части
+    
     while (i < nl) {
         arr[k] = left[i];
         i++;
         k++;
     }
-    // записываем оставшиеся элементы правой части
+    
     while (j < nr) {
         arr[k] = right[j];
         j++;
